@@ -27,5 +27,9 @@ if (round(cash*tob_rate, 2)) >= 1300:
 else:
     tob = round(cash*tob_rate, 2)
 
+#Determin how many pieces to buy
 inv_ceiling = cash - tob - dg_tc
-pcs = int(inv_ceiling // rtprice)
+pcs = int(inv_ceiling // pretty_json(rtprice[0]['data']['lastPrice']))
+
+# Execute Order
+dg.buyorder(Order.Type.MARKET, Product(IWDA).id, 3, pcs)
