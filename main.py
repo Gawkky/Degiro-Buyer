@@ -37,3 +37,5 @@ if cash > int(os.getenv('DGCASH')):
 
 #else:
 #    x = ''
+
+dg.logout()
