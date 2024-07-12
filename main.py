@@ -35,7 +35,7 @@ if cash > int(os.getenv('DGCASH')):
     # Execute Order
     dg.buyorder(Order.Type.MARKET, Product(ETF).id, 3, pcs)
 
-#else:
-#    x = ''
+else:
+    print('no transaction made')
 
 dg.logout()
