@@ -61,3 +61,8 @@ create your own cron-schedule via: https://crontab.guru/
 #### Windows
 
 Create this via Task-scheduler. I'm not going to explain the workflow as it is self-explanatory.
+
+## TODO
+
+- [ ] adding multiple stock support
+- [ ] fixing faulty degiroapi
