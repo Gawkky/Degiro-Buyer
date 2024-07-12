@@ -19,17 +19,21 @@ cash = dg.getdata(degiroapi.Data.Type.CASHFUNDS)
 IWDA = dg.search_products('IWDA.AS')
 rtprice = dg.real_time_price(Product(IWDA).id, dg.Interval.Type.One_Day)
 
-# Determin TOB
-tob_rate = 0.0012
+if cash > 300:
+    # Determin TOB
+    tob_rate = 0.0012
 
-if (round(cash*tob_rate, 2)) >= 1300:
-    tob = 1300
-else:
-    tob = round(cash*tob_rate, 2)
+    if (round(cash*tob_rate, 2)) >= 1300:
+        tob = 1300
+    else:
+        tob = round(cash*tob_rate, 2)
 
-#Determin how many pieces to buy
-inv_ceiling = cash - tob - dg_tc
-pcs = int(inv_ceiling // pretty_json(rtprice[0]['data']['lastPrice']))
+    #Determin how many pieces to buy
+    inv_ceiling = cash - tob - dg_tc
+    pcs = int(inv_ceiling // pretty_json(rtprice[0]['data']['lastPrice']))
 
-# Execute Order
-dg.buyorder(Order.Type.MARKET, Product(IWDA).id, 3, pcs)
+    # Execute Order
+    dg.buyorder(Order.Type.MARKET, Product(IWDA).id, 3, pcs)
+
+#else:
+#    x = ''
