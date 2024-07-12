@@ -16,10 +16,10 @@ dg_tc = 1
 
 #Getting data from Degiro
 cash = dg.getdata(degiroapi.Data.Type.CASHFUNDS)
-IWDA = dg.search_products('IWDA.AS')
-rtprice = dg.real_time_price(Product(IWDA).id, dg.Interval.Type.One_Day)
+ETF = dg.search_products(os.getenv('DGETF'))
+rtprice = dg.real_time_price(Product(ETF).id, dg.Interval.Type.One_Day)
 
-if cash > 300:
+if cash > int(os.getenv('DGCASH')):
     # Determin TOB
     tob_rate = 0.0012
 
@@ -33,7 +33,7 @@ if cash > 300:
     pcs = int(inv_ceiling // pretty_json(rtprice[0]['data']['lastPrice']))
 
     # Execute Order
-    dg.buyorder(Order.Type.MARKET, Product(IWDA).id, 3, pcs)
+    dg.buyorder(Order.Type.MARKET, Product(ETF).id, 3, pcs)
 
 #else:
 #    x = ''
