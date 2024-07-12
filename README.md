@@ -8,6 +8,18 @@ By setting up a recurring payment from your bank to your cashposition in Degiro 
 
 ## Getting Started
 
+### Environenment variables
+
+The script uses environment variables which are initiated via a '.env' file.
+See here for a template.
+```
+DGUSERNAME = 'Username' #Username used for login
+DGPASSWORD = 'Password' #Password used for login
+
+DGCASH = '1000' #Trigger Amount which the cashposition has to before buying stocks
+DGETF = 'AAPL' #Ticker Symbol
+```
+
 ### Installing
 
 Clone this repo by using
